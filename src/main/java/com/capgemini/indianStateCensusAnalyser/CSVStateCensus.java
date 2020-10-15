@@ -25,9 +25,9 @@ public class CSVStateCensus {
 			return numOfEntries;
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new CensusAnalyserException(e.getMessage(),
+					CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
 		}
-		return 0;
 
 	}
 
