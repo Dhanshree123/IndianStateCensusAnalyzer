@@ -1,5 +1,6 @@
 package com.capgemini.indianStateCensusAnalyser;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -16,6 +17,20 @@ public class CSVStateCensus {
 		String[] csvFile = csvFilePath.split("[.]");
 		if (!csvFile[1].equals("csv")) {
 			throw new CensusAnalyserException(CensusAnalyserException.ExceptionType.WRONG_FILE_TYPE);
+		}
+
+		BufferedReader br;
+		try {
+			br = Files.newBufferedReader(Paths.get(csvFilePath));
+			while (true) {
+				String line = br.readLine();
+				String[] columns = line.split(",");
+				if (columns.length < 4) {
+					throw new CensusAnalyserException("Invalid delimiter",
+							CensusAnalyserException.ExceptionType.WRONG_DELIMITER_TYPE);
+				}
+			}
+		} catch (NullPointerException | IOException e) {
 		}
 
 		try {
