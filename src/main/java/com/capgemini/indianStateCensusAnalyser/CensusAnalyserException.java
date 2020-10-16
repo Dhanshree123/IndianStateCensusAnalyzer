@@ -3,7 +3,7 @@ package com.capgemini.indianStateCensusAnalyser;
 public class CensusAnalyserException extends Exception {
 
 	enum ExceptionType {
-		WRONG_FILE_PATH, WRONG_FILE_TYPE, WRONG_DELIMITER_TYPE;
+		WRONG_FILE_PATH, WRONG_FILE_TYPE, WRONG_DELIMITER_TYPE, WRONG_HEADER;
 	}
 
 	ExceptionType type;
